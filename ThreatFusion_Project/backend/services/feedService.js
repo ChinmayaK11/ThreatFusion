@@ -1,4 +1,5 @@
 const axios = require('axios');
+const { calculateThreatScore } = require('../utils/threatScorer'); 
 
 exports.fetchThreatFeeds = async () => {
   try {
@@ -11,7 +12,6 @@ exports.fetchThreatFeeds = async () => {
       }
     );
 
-    // Simplify the data for frontend usage
     const simplifiedFeeds = data.results.map(pulse => ({
       id: pulse.id,
       name: pulse.name,
@@ -35,21 +35,28 @@ exports.fetchThreatFeeds = async () => {
 
 exports.fetchIPReputation = async (ip) => {
   try {
-    const ipinfoResponse = await axios.get(`https://ipinfo.io/${ip}/json?token=${process.env.IPINFO_TOKEN}`);
+    const ipinfoResponse = await axios.get(⁠ https://ipinfo.io/${ip}/json?token=${process.env.IPINFO_TOKEN} ⁠);
 
-    return {
+    const ipData = {
       ip,
       country: ipinfoResponse.data.country,
       region: ipinfoResponse.data.region,
       city: ipinfoResponse.data.city,
       org: ipinfoResponse.data.org,
-      loc: ipinfoResponse.data.loc,  // format: "lat,long"
-      timezone: ipinfoResponse.data.timezone,
+      loc: ipinfoResponse.data.loc,
+      timezone: ipinfoResponse.data.timezone
+    };
+
+    const { score, reasons, priority } = calculateThreatScore(ipData);
+
+    return {
+      ...ipData,
+      threatScore: score,
+      priorityLabel: priority,
+      threatReasons: reasons
     };
   } catch (error) {
     console.error('IP Geolocation Error:', error.message);
     return { ip, error: 'Failed to fetch IP geolocation data' };
   }
 };
-
-
