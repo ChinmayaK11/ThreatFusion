@@ -1,0 +1,426 @@
+/* IP Lookup Component - Cybersecurity Theme CSS */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto+Mono:wght@300;400;500&display=swap');
+
+/* Main Container */
+.ip-lookup {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  font-family: 'Roboto Mono', monospace;
+  color: #e0e0e0;
+  padding: 20px;
+  margin: 0;
+}
+
+/* Content wrapper */
+.ip-lookup > div {
+  background: rgba(13, 13, 13, 0.9);
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  border-radius: 15px;
+  padding: 30px;
+  margin: 20px auto;
+  max-width: 900px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 0 20px rgba(0, 255, 255, 0.1),
+    inset 0 0 20px rgba(0, 255, 255, 0.05);
+  animation: container-fade-in 0.6s ease-out;
+}
+
+@keyframes container-fade-in {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Container glow effect */
+.ip-lookup > div::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.05), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.ip-lookup > div:hover::before {
+  opacity: 1;
+}
+
+/* Title styling - overriding Tailwind classes */
+.ip-lookup .text-xl {
+  font-family: 'Orbitron', monospace !important;
+  font-size: 1.8rem !important;
+  font-weight: 700 !important;
+  color: #00ffff !important;
+  text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+  margin: 0 0 25px 0 !important;
+  letter-spacing: 1px;
+  text-align: center;
+  position: relative;
+}
+
+.ip-lookup .text-xl::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ffff, transparent);
+}
+
+.ip-lookup .font-semibold {
+  font-family: 'Orbitron', monospace !important;
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  color: #00ffff !important;
+  margin: 0 0 15px 0 !important;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+  text-align: center;
+  position: relative;
+}
+
+.ip-lookup .font-semibold::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #00ffff, transparent);
+}
+
+/* Input field styling - overriding Tailwind */
+.ip-lookup input[type="text"] {
+  width: 100% !important;
+  padding: 15px 20px !important;
+  background: rgba(0, 0, 0, 0.7) !important;
+  border: 2px solid rgba(0, 255, 255, 0.3) !important;
+  border-radius: 8px !important;
+  color: #e0e0e0 !important;
+  font-family: 'Roboto Mono', monospace !important;
+  font-size: 1rem !important;
+  outline: none !important;
+  transition: all 0.3s ease !important;
+  box-sizing: border-box !important;
+  margin-bottom: 20px !important;
+}
+
+.ip-lookup input[type="text"]::placeholder {
+  color: rgba(224, 224, 224, 0.5) !important;
+}
+
+.ip-lookup input[type="text"]:focus {
+  border-color: #00ffff !important;
+  box-shadow: 
+    0 0 20px rgba(0, 255, 255, 0.2),
+    inset 0 0 20px rgba(0, 255, 255, 0.1) !important;
+  background: rgba(0, 0, 0, 0.8) !important;
+  outline: 2px solid #00ffff !important;
+  outline-offset: 2px !important;
+}
+
+/* Button styling - overriding Tailwind */
+.ip-lookup button {
+  padding: 15px 30px !important;
+  background: linear-gradient(135deg, #00ffff 0%, #0088cc 100%) !important;
+  border: 2px solid rgba(0, 255, 255, 0.5) !important;
+  border-radius: 8px !important;
+  color: #000 !important;
+  font-family: 'Orbitron', monospace !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  min-width: 150px !important;
+  height: 54px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-left: 10px !important;
+}
+
+.ip-lookup button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.ip-lookup button:hover::before {
+  left: 100%;
+}
+
+.ip-lookup button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 
+    0 5px 15px rgba(0, 255, 255, 0.4),
+    0 0 30px rgba(0, 255, 255, 0.2) !important;
+  border-color: #00ffff !important;
+}
+
+.ip-lookup button:active {
+  transform: translateY(0) !important;
+}
+
+/* Error message styling - overriding Tailwind */
+.ip-lookup .text-red-500 {
+  background: rgba(255, 68, 68, 0.1) !important;
+  border: 2px solid rgba(255, 68, 68, 0.5) !important;
+  border-radius: 8px !important;
+  padding: 15px !important;
+  margin: 20px 0 !important;
+  color: #ff4444 !important;
+  font-family: 'Roboto Mono', monospace !important;
+  font-size: 0.9rem !important;
+  position: relative !important;
+  animation: error-pulse 0.5s ease-out !important;
+}
+
+@keyframes error-pulse {
+  0% { transform: scale(0.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Results container - overriding Tailwind mt-4 */
+.ip-lookup .mt-4 {
+  margin-top: 20px !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  border: 2px solid rgba(0, 255, 255, 0.2) !important;
+  border-radius: 10px !important;
+  padding: 20px !important;
+  position: relative !important;
+  animation: details-slide-in 0.5s ease-out !important;
+}
+
+@keyframes details-slide-in {
+  0% { opacity: 0; transform: translateX(-20px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+/* Pre-formatted JSON styling - overriding Tailwind */
+.ip-lookup pre {
+  background: rgba(0, 0, 0, 0.8) !important;
+  border: 2px solid rgba(0, 255, 255, 0.3) !important;
+  border-radius: 12px !important;
+  padding: 25px !important;
+  margin: 20px 0 !important;
+  font-family: 'Roboto Mono', monospace !important;
+  font-size: 0.9rem !important;
+  color: #e0e0e0 !important;
+  overflow-x: auto !important;
+  position: relative !important;
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+  line-height: 1.6 !important;
+  box-shadow: 
+    0 0 20px rgba(0, 255, 255, 0.1),
+    inset 0 0 20px rgba(0, 255, 255, 0.05) !important;
+  transition: all 0.3s ease !important;
+}
+
+.ip-lookup pre:hover {
+  border-color: rgba(0, 255, 255, 0.5) !important;
+  box-shadow: 
+    0 0 30px rgba(0, 255, 255, 0.2),
+    inset 0 0 30px rgba(0, 255, 255, 0.1) !important;
+}
+
+.ip-lookup pre::before {
+  content: 'IP DETAILS';
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  background: rgba(13, 13, 13, 0.95);
+  color: #00ffff;
+  padding: 5px 15px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  border-radius: 4px;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+/* Style JSON syntax highlighting */
+.ip-lookup pre {
+  /* JSON key styling */
+  --json-key-color: #00ffff;
+  --json-string-color: #00ff88;
+  --json-number-color: #ff6b6b;
+  --json-bracket-color: #ffc107;
+}
+
+/* Custom JSON syntax highlighting using regex-like approach */
+.ip-lookup pre::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.02), transparent);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.ip-lookup pre:hover::after {
+  opacity: 1;
+}
+
+/* Remove Tailwind gray background */
+.ip-lookup .bg-gray-100 {
+  background: rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Additional JSON formatting styles */
+.ip-lookup pre {
+  /* Enhanced readability */
+  text-shadow: 0 0 1px rgba(224, 224, 224, 0.3);
+}
+
+/* Create a glow effect around braces and brackets */
+.ip-lookup pre {
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(0, 255, 255, 0.03) 0%, transparent 50%);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ip-lookup > div {
+    margin: 10px;
+    padding: 20px;
+  }
+  
+  .ip-lookup button {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-top: 10px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .ip-lookup > div {
+    margin: 5px;
+    padding: 15px;
+  }
+  
+  .ip-lookup .text-xl {
+    font-size: 1.5rem !important;
+  }
+  
+  .ip-lookup .font-semibold {
+    font-size: 1.1rem !important;
+  }
+  
+  .ip-lookup input[type="text"] {
+    padding: 12px 15px !important;
+  }
+  
+  .ip-lookup button {
+    padding: 12px 20px !important;
+    font-size: 0.9rem !important;
+    height: 48px !important;
+  }
+  
+  .ip-lookup pre {
+    font-size: 0.75rem !important;
+  }
+}
+
+/* Additional utility classes that might be needed */
+.ip-lookup .mb-2 {
+  margin-bottom: 0 !important; /* Override since we're handling margins differently */
+}
+
+.ip-lookup .mt-2 {
+  margin-top: 0 !important; /* Override since we're handling margins differently */
+}
+
+.ip-lookup .ml-2 {
+  margin-left: 0 !important; /* Override since we're handling margins differently */
+}
+
+.ip-lookup .px-2,
+.ip-lookup .py-1,
+.ip-lookup .px-3{
+  padding: 0 !important; /* Override Tailwind padding */
+}
+
+.ip-lookup .rounded {
+  border-radius: 0 !important; /* Override to use our custom border-radius */
+}
+
+.ip-lookup .p-2 {
+  padding: 1 !important; /* Override Tailwind padding */
+}
+
+.ip-lookup {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: sans-serif;
+}
+
+.ip-lookup input {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 300px;
+}
+
+.ip-lookup button {
+  padding: 8px 16px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.ip-lookup button:hover {
+  background-color: #1e40af;
+}
+
+.ip-details {
+  margin-top: 1rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.ip-details h3 {
+  margin-bottom: 1rem;
+}
+
+.ip-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.ip-grid div span {
+  font-weight: bold;
+}

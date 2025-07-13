@@ -1,0 +1,382 @@
+/* Dashboard Cybersecurity Theme CSS */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto+Mono:wght@300;400;500&display=swap');
+
+.dashboard-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+  color: #e0e0e0;
+  font-family: 'Roboto Mono', monospace;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Animated background grid */
+.dashboard-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: grid-move 20s linear infinite;
+  z-index: -1;
+}
+
+@keyframes grid-move {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
+}
+
+/* Glowing particles effect */
+.dashboard-container::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 80%, rgba(255, 0, 255, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 40% 60%, rgba(0, 255, 128, 0.1) 0%, transparent 50%);
+  animation: particle-float 15s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes particle-float {
+  0%, 100% { opacity: 0.3; transform: translateY(0px); }
+  50% { opacity: 0.6; transform: translateY(-20px); }
+}
+
+/* Dashboard Header */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: rgba(13, 13, 13, 0.9);
+  border-bottom: 2px solid rgba(0, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Header scanning line effect */
+.dashboard-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ffff, transparent);
+  animation: scan-line 4s linear infinite;
+}
+
+@keyframes scan-line {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.dashboard-header h2 {
+  font-family: 'Orbitron', monospace;
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #00ffff;
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+  letter-spacing: 2px;
+  margin: 0;
+  position: relative;
+}
+
+.dashboard-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #00ffff, transparent);
+}
+
+/* Logout Button */
+.logout-button {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
+  border: 2px solid rgba(255, 68, 68, 0.5);
+  border-radius: 8px;
+  color: #fff;
+  font-family: 'Orbitron', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.logout-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.logout-button:hover::before {
+  left: 100%;
+}
+
+.logout-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 5px 15px rgba(255, 68, 68, 0.4),
+    0 0 30px rgba(255, 68, 68, 0.2);
+  border-color: #ff4444;
+}
+
+.logout-button:active {
+  transform: translateY(0);
+}
+
+/* Dashboard Main Content */
+.dashboard-main {
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 120px);
+}
+
+/* Navigation Container */
+.dashboard-nav {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.nav-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navigation Items */
+.nav-item {
+  position: relative;
+  animation: card-fade-in 0.6s ease-out;
+}
+
+.nav-item:nth-child(1) { animation-delay: 0.1s; }
+.nav-item:nth-child(2) { animation-delay: 0.2s; }
+.nav-item:nth-child(3) { animation-delay: 0.3s; }
+.nav-item:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes card-fade-in {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Navigation Links */
+.nav-link {
+  display: block;
+  background: rgba(13, 13, 13, 0.9);
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  border-radius: 15px;
+  padding: 30px;
+  text-decoration: none;
+  color: #e0e0e0;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 0 20px rgba(0, 255, 255, 0.1),
+    inset 0 0 20px rgba(0, 255, 255, 0.05);
+}
+
+/* Card glow effect */
+.nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.nav-link:hover::before {
+  opacity: 1;
+}
+
+.nav-link:hover {
+  border-color: #00ffff;
+  transform: translateY(-5px);
+  box-shadow: 
+    0 10px 30px rgba(0, 255, 255, 0.2),
+    inset 0 0 30px rgba(0, 255, 255, 0.1);
+}
+
+/* Scanning effect for cards */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ffff, transparent);
+  transition: left 0.5s ease;
+}
+
+.nav-link:hover::after {
+  left: 100%;
+}
+
+/* Navigation Title */
+.nav-title {
+  display: block;
+  font-family: 'Orbitron', monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #00ffff;
+  text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Navigation Description */
+.nav-description {
+  display: block;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.9rem;
+  color: rgba(224, 224, 224, 0.8);
+  line-height: 1.5;
+  position: relative;
+  z-index: 1;
+}
+
+/* Security indicator */
+.dashboard-container .security-indicator {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 120px;
+  height: 20px;
+  background: linear-gradient(90deg, #00ff00 0%, #ffff00 50%, #ff0000 100%);
+  opacity: 0.3;
+  animation: security-bar 3s ease-in-out infinite;
+  border-radius: 10px;
+  z-index: 10;
+}
+
+@keyframes security-bar {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.7; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-header {
+    padding: 15px 20px;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .dashboard-header h2 {
+    font-size: 1.8rem;
+  }
+  
+  .logout-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+  
+  .dashboard-main {
+    padding: 20px;
+  }
+  
+  .nav-list {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .nav-link {
+    padding: 20px;
+  }
+  
+  .nav-title {
+    font-size: 1.3rem;
+  }
+  
+  .nav-description {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .nav-link {
+    padding: 15px;
+  }
+  
+  .nav-title {
+    font-size: 1.2rem;
+  }
+  
+  .nav-description {
+    font-size: 0.75rem;
+  }
+}
+
+/* Focus states for accessibility */
+.nav-link:focus {
+  outline: 2px solid #00ffff;
+  outline-offset: 2px;
+}
+
+.logout-button:focus {
+  outline: 2px solid #ff4444;
+  outline-offset: 2px;
+}
+
+/* Loading states */
+.nav-link.loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link.loading::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+  animation: loading-shimmer 1.5s linear infinite;
+}
+
+@keyframes loading-shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}

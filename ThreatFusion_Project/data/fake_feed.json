@@ -1,0 +1,42 @@
+[
+  {
+    "id": "threat-001",
+    "title": "Ransomware Activity on Apache Servers",
+    "description": "Multiple instances of ransomware infections targeting misconfigured Apache servers in Asia-Pacific region.",
+    "source": "Cyber Threat Alliance",
+    "severity": "High",
+    "timestamp": "2025-07-11T09:15:00Z"
+  },
+  {
+    "id": "threat-002",
+    "title": "Credential Stuffing Attack on Banking Portals",
+    "description": "Detected automated login attempts on several banking portals using breached credentials.",
+    "source": "Dark Web Monitor",
+    "severity": "Critical",
+    "timestamp": "2025-07-11T08:40:00Z"
+  },
+  {
+    "id": "threat-003",
+    "title": "New Malware Variant: RedTiger",
+    "description": "RedTiger targets Linux systems using SSH brute force and installs reverse shells.",
+    "source": "CERT-IN",
+    "severity": "Medium",
+    "timestamp": "2025-07-10T23:12:00Z"
+  },
+  {
+    "id": "threat-004",
+    "title": "Phishing Campaign via QR Codes",
+    "description": "Attackers are using QR codes in phishing emails to bypass traditional email filters.",
+    "source": "PhishLabs",
+    "severity": "Low",
+    "timestamp": "2025-07-10T18:00:00Z"
+  },
+  {
+    "id": "threat-005",
+    "title": "CVE-2024-11478 Exploitation in Wild",
+    "description": "Proof-of-concept code for a critical privilege escalation vulnerability in kernel (CVE-2024-11478) is now publicly available.",
+    "source": "ExploitDB",
+    "severity": "Critical",
+    "timestamp": "2025-07-11T10:00:00Z"
+  }
+]

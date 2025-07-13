@@ -1,0 +1,9 @@
+"""
+You are a cybersecurity assistant. Given the following CVE details, generate a brief summary in under 100 words explaining what it is, its impact, and how critical it is.
+
+CVE: {{cve_id}}
+Description: {{description}}
+CVSS Score: {{cvss}}
+Exploited: {{exploited}}
+Reports: {{reports}}
+"""

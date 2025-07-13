@@ -1,0 +1,9 @@
+Given the following CVE ID and description, map it to a likely MITRE ATT&CK tactic and technique. Return in this format:
+{
+  "tactic": "Privilege Escalation",
+  "technique": "T1055"
+}
+
+CVE: {{cve_id}}
+Description: {{description}}
+"""
